@@ -1,0 +1,23 @@
+[
+    {
+        "id":1,
+        "nome":"Belo Horizonte",
+        "cep":"30000-000",
+        "descricao":"xxxx",
+        "populacao":2000000
+    },
+    {
+        "id":2,
+        "nome":"Contagem",
+        "cep":"31000-000",
+        "descricao":"xxxx",
+        "populacao":1500000
+    },
+    {
+        "id":3,
+        "nome":"Betim",
+        "cep":"32000-000",
+        "descricao":"xxxx",
+        "populacao":100000
+    }
+]
