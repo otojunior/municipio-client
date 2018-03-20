@@ -1,3 +1,32 @@
-<p>
-  municipio-listagem works!
-</p>
+<div class="row">
+  <h1 class="display-4">Municipios</h1>
+</div>
+<div class="row" style="margin-top: 20px">
+  <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-secondary" onClick="window.location.replace('municipio/novo')">Novo</button>
+      <button type="button" class="btn btn-secondary" onClick="window.location.replace('edit.html')">Clonar</button>
+      <button type="button" class="btn btn-secondary" (click)="downloadArquivo()">Download</button>
+  </div>
+</div>
+<div class="row" style="margin-top: 20px">
+  <table class="table table-striped">
+      <thead class="thead-dark">
+          <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nome</th>
+              <th scope="col">CEP</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let m of municipios">
+              <td>{{m.id}}</td>
+              <td>{{m.nome}}</td>
+              <td>{{m.cep}}</td>
+              <td>
+                  <a href="#">Visualizar</a> |
+                  <a [routerLink]="['/municipio', m.id]">Editar</a>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>

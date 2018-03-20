@@ -6,6 +6,7 @@ import { HttpClientModule  } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { MunicipioListagemComponent } from './view/municipio/municipio-listagem/municipio-listagem.component';
 import { MunicipioEdicaoComponent } from './view/municipio/municipio-edicao/municipio-edicao.component';
+import { MunicipioService } from './service/municipio.service';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { MunicipioEdicaoComponent } from './view/municipio/municipio-edicao/muni
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    MunicipioService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
