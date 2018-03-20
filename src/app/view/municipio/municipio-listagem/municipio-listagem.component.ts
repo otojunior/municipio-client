@@ -1,3 +1,4 @@
+import { Arquivo } from '../../../model/arquivo';
 import {Component, OnInit} from '@angular/core';
 import {Municipio} from '../../../model/municipio';
 import {MunicipioService} from '../../../service/municipio.service';
@@ -15,7 +16,7 @@ export class MunicipioListagemComponent implements OnInit {
     /**
      *
      */
-    ngOnInit() {
+    ngOnInit(): void {
         this.service.obterMunicipios().subscribe(
             munic => this.municipios = munic,
             error => console.log(error)
@@ -25,14 +26,9 @@ export class MunicipioListagemComponent implements OnInit {
     /**
      *
      */
-    downloadArquivo() {
+    downloadArquivo(): void {
         this.service.downloadArquivo().subscribe(
-            response => {
-                console.log(response);
-                this.tratarDownloadArquivo(response);
-                //console.log(">>> classe: " + response.constructor.name);
-                //console.log(">>> response.size: " + response.size);
-            },
+            response => this.tratarDownloadArquivo(response),
             error => console.log(error)
         );
     }
@@ -40,13 +36,37 @@ export class MunicipioListagemComponent implements OnInit {
     /**
      *
      */
-    tratarDownloadArquivo(response: Response) {
+    downloadArquivoExperimental(): void {
+        this.service.downloadArquivoExperimental().subscribe(
+            json => this.tratarDownloadArquivoExperimental(json),
+            error => console.log(error)
+        );
+    }
+
+    /**
+     *
+     */
+    tratarDownloadArquivo(response: Response): void {
         const blob = new Blob([response], {type: 'text/csv;charset=iso-8859-1'});
-        //const url = window.URL.createObjectURL(blob);
-        //window.open(url);
+        this.clicarLink(blob, 'municipios.csv');
+    }
+
+    /**
+     *
+     */
+    tratarDownloadArquivoExperimental(arquivo: Arquivo): void {
+        const b64toBlob = require('b64-to-blob');
+        const blob = b64toBlob(arquivo.conteudo, 'text/csv');
+        this.clicarLink(blob, arquivo.nome);
+    }
+
+    /**
+     *
+     */
+    clicarLink(blob: Blob, nomeArquivo: string): void {
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);
-        link.setAttribute('download', 'municipios.csv');
+        link.setAttribute('download', nomeArquivo);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

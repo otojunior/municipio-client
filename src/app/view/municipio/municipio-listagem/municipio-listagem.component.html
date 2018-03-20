@@ -3,9 +3,12 @@
 </div>
 <div class="row" style="margin-top: 20px">
   <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary" onClick="window.location.replace('municipio/novo')">Novo</button>
-      <button type="button" class="btn btn-secondary" onClick="window.location.replace('edit.html')">Clonar</button>
-      <button type="button" class="btn btn-secondary" (click)="downloadArquivo()">Download</button>
+		<!--
+		<button type="button" class="btn btn-secondary" onClick="window.location.replace('municipio/novo')">Novo</button>
+		<button type="button" class="btn btn-secondary" onClick="window.location.replace('edit.html')">Clonar</button>
+		-->
+		<button type="button" class="btn btn-secondary" (click)="downloadArquivo()">Download</button>
+		<button type="button" class="btn btn-secondary" (click)="downloadArquivoExperimental()">Download (Experimental)</button>
   </div>
 </div>
 <div class="row" style="margin-top: 20px">

@@ -11,8 +11,8 @@ import 'rxjs/add/observable/of';
 export class AppComponent {
     title = 'mc';
 
-    ngOnInit() {
         /*
+    ngOnInit() {
         let x = Observable.of(["um", "dois", "tres"]);
         console.log(x);
         x.subscribe(
@@ -20,8 +20,8 @@ export class AppComponent {
           this.handleError,
           this.handleComplete
         );
-        */
     }
+        */
 
     /*
     handleProcess(arr: string[]): void {
